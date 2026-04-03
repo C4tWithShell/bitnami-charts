@@ -1,5 +1,32 @@
 apiVersion: v1
 entries:
+  common:
+  - annotations:
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 2.31.7
+    created: "2026-04-03T11:37:28.622161+03:00"
+    description: A Library Helm Chart for grouping common logic between bitnami charts.
+      This chart is not deployable by itself.
+    digest: 8cb1adcdaaaf9e6024b7ecf1c6fbd6f411eb1d9ef608795d49c5e55fed136477
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/downloads/logos/bitnami-mark.png
+    keywords:
+    - common
+    - helper
+    - template
+    - function
+    - bitnami
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: common
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/common
+    type: library
+    urls:
+    - common-2.31.8.tgz
+    version: 2.31.8
   mariadb:
   - annotations:
       category: Database
@@ -14,7 +41,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 11.4.7
-    created: "2025-06-03T11:03:39.91203+03:00"
+    created: "2026-04-03T11:37:28.626222+03:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -40,6 +67,6 @@ entries:
     sources:
     - https://github.com/bitnami/charts/tree/main/bitnami/mariadb
     urls:
-    - https://c4twithshell.github.io/bitnami-charts/mariadb-20.5.6.tgz
+    - mariadb-20.5.6.tgz
     version: 20.5.6
-generated: "2025-06-03T11:03:39.906775+03:00"
+generated: "2026-04-03T11:37:28.620729+03:00"
