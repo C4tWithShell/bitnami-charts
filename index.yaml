@@ -5,7 +5,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 2.31.7
-    created: "2026-04-15T13:03:53.7032+03:00"
+    created: "2026-04-27T15:12:23.843113+03:00"
     description: A Library Helm Chart for grouping common logic between bitnami charts.
       This chart is not deployable by itself.
     digest: 8cb1adcdaaaf9e6024b7ecf1c6fbd6f411eb1d9ef608795d49c5e55fed136477
@@ -40,7 +40,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 9.1.2
-    created: "2026-04-15T13:03:53.70885+03:00"
+    created: "2026-04-27T15:12:23.849867+03:00"
     dependencies:
     - condition: global.kibanaEnabled
       name: kibana
@@ -79,7 +79,7 @@ entries:
       tanzuCategory: clusterUtility
     apiVersion: v2
     appVersion: 9.1.2
-    created: "2026-04-15T13:03:53.710363+03:00"
+    created: "2026-04-27T15:12:23.851621+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -121,7 +121,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 11.4.7
-    created: "2026-04-15T13:03:53.713004+03:00"
+    created: "2026-04-27T15:12:23.85471+03:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -166,7 +166,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 8.0.13
-    created: "2026-04-15T13:03:53.717462+03:00"
+    created: "2026-04-27T15:12:23.85949+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -195,6 +195,47 @@ entries:
     urls:
     - mongodb-17.0.1.tgz
     version: 17.0.1
+  mysql:
+  - annotations:
+      images: |
+        - name: mysql
+          image: docker.io/bitnami/mysql:9.4.0-debian-12-r1
+        - name: mysqld-exporter
+          image: docker.io/bitnami/mysqld-exporter:0.17.2-debian-12-r16
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r50
+      licenses: Apache-2.0
+      tanzuCategory: service
+    apiVersion: v2
+    appVersion: 9.4.0
+    created: "2026-04-27T15:12:23.862037+03:00"
+    dependencies:
+    - name: common
+      repository: https://c4twithshell.github.io/bitnami-charts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MySQL is a fast, reliable, scalable, and easy to use open source
+      relational database system. Designed to handle mission-critical, heavy-load
+      production applications.
+    digest: a2445bda96db75bd722fa2d22114abe7cfb7e180eb45382950059d7723ab10da
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/mysql/img/mysql-stack-220x234.png
+    keywords:
+    - mysql
+    - database
+    - sql
+    - cluster
+    - high availability
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: mysql
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mysql
+    urls:
+    - mysql-14.0.5.tgz
+    version: 14.0.5
   postgresql:
   - annotations:
       images: |
@@ -208,7 +249,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 17.6.0
-    created: "2026-04-15T13:03:53.720198+03:00"
+    created: "2026-04-27T15:12:23.865302+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -254,7 +295,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 8.2.1
-    created: "2026-04-15T13:03:53.725468+03:00"
+    created: "2026-04-27T15:12:23.868835+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -280,4 +321,4 @@ entries:
     urls:
     - redis-23.1.1.tgz
     version: 23.1.1
-generated: "2026-04-15T13:03:53.701722+03:00"
+generated: "2026-04-27T15:12:23.841834+03:00"
