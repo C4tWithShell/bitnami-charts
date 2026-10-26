@@ -14,10 +14,10 @@ appVersion: 26.3.3
 dependencies:
 - condition: postgresql.enabled
   name: postgresql
-  repository: oci://registry-1.docker.io/bitnamicharts
-  version: 16.x.x
+  repository: https://c4twithshell.github.io/bitnami-charts
+  version: 17.x.x
 - name: common
-  repository: oci://registry-1.docker.io/bitnamicharts
+  repository: https://c4twithshell.github.io/bitnami-charts
   tags:
   - bitnami-common
   version: 2.x.x
