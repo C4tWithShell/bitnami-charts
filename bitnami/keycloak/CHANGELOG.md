@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.5.1 (2026-10-29)
+
+* [bitnami/keycloak] Use HTTPS scheme for health probes when TLS is enabled
+
 ## 25.5.0 (2026-10-28)
 
 * [bitnami/keycloak] Update Keycloak to 26.8.1 and keycloak-config-cli to 6.5.1, use self-hosted images from ghcr.io/c4twithshell
