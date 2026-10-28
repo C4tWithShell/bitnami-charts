@@ -39,17 +39,24 @@ jobs:
     name: Automatically update README, CRDs and CHANGELOG
     permissions:
       contents: read
-    if: needs.get-chart.outputs.result == 'ok'
+    if: |
+      needs.get-chart.outputs.result == 'ok' &&
+      (
+        contains(github.event.pull_request.labels.*.name, 'verify') || (github.event.action == 'labeled' && github.event.label.name == 'verify')
+      )
     steps:
       - name: Checkout bitnami/charts
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
           token: ${{ secrets.BITNAMI_BOT_TOKEN }}
           path: charts
+          # Safe here: this job only runs once a maintainer applies the 'verify' label (see the job's `if:` above),
+          # and the checked-out fork code is only read as data (values.yaml/Chart.yaml), never executed.
+          allow-unsafe-pr-checkout: true
       - name: Clone upstream bitnami/charts repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           path: upstream-charts
       - name: Setup git configuration
@@ -101,7 +108,10 @@ jobs:
           # Include h1 heading and add entry for the current version. There is no tag for the current version (this will be created once merged), so we need to manually add it.
           # We know the final squashed commit title, which will be the PR title. We cannot add a link to the commit in the main branch because it has not been
           # merged yet (this will be corrected once a new version regenerates the changelog). Instead, we add the PR url which contains the exact same information.
-          echo -e -n "# Changelog\n\n## $chart_version ($(date +'%Y-%m-%d'))\n\n* ${pr_title} ([#${PULL_REQUEST_NUMBER}](${PULL_REQUEST_URL}))\n" > "$changelog_file"
+          # Use printf with %s so chart_version / pr_title from untrusted Chart.yaml and API cannot trigger command substitution (unlike echo "...$chart_version...").
+          printf '# Changelog\n\n## %s (%s)\n\n* %s ([#%s](%s))\n' \
+            "$chart_version" "$(date +'%Y-%m-%d')" "$pr_title" "$PULL_REQUEST_NUMBER" "$PULL_REQUEST_URL" \
+            > "$changelog_file"
           cat "$changelog_tmp" >> "$changelog_file"
           rm "$changelog_tmp"
 
@@ -112,14 +122,14 @@ jobs:
           fi
       - name: 'Clone readme-generator-for-helm'
         if: needs.get-chart.outputs.values-updated == 'true' && github.event.action != 'edited'
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: bitnami/readme-generator-for-helm
           path: readme-generator-for-helm
           ref: '4d29f59abac6aeed6fbc2467e24fc17560057bcb' # 3.0.1 commit ID
       - name: 'Setup Node.js'
         if: needs.get-chart.outputs.values-updated == 'true' && github.event.action != 'edited'
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
           node-version: '24.x'
       - name: 'Get npm cache directory'
@@ -129,7 +139,7 @@ jobs:
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
       - name: 'Cache dependencies'
         if: needs.get-chart.outputs.values-updated == 'true' && github.event.action != 'edited'
-        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: npm-${{ hashFiles('./readme-generator-for-helm/package-lock.json') }}
