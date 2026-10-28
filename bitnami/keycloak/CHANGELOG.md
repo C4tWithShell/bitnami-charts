@@ -1,5 +1,9 @@
 # Changelog
 
+## 25.5.0 (2026-10-28)
+
+* [bitnami/keycloak] Update Keycloak to 26.8.1 and keycloak-config-cli to 6.5.1, use self-hosted images from ghcr.io/c4twithshell
+
 ## 25.3.2 (2026-02-19)
 
 * [bitnami/keycloak] Fix health probe paths with httpRelativePath ([#36467](https://github.com/bitnami/charts/pull/36467))
