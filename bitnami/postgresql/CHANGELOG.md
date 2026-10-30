@@ -1,5 +1,9 @@
 # Changelog
 
+## 18.0.0 (2026-10-30)
+
+* [bitnami/postgresql] Upgrade PostgreSQL to 18.6.0, use self-hosted image
+
 ## <small>17.1.2 (2026-09-08)</small>
 
 * [bitnami/postgresql] Add seccompProfile to podSecurityContext ([#36593](https://github.com/bitnami/charts/pull/36593))
