@@ -5,7 +5,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 2.31.7
-    created: "2026-10-29T01:09:13.143678+03:00"
+    created: "2026-10-30T03:08:00.882471+03:00"
     description: A Library Helm Chart for grouping common logic between bitnami charts.
       This chart is not deployable by itself.
     digest: 8cb1adcdaaaf9e6024b7ecf1c6fbd6f411eb1d9ef608795d49c5e55fed136477
@@ -40,7 +40,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 9.1.2
-    created: "2026-10-29T01:09:13.149348+03:00"
+    created: "2026-10-30T03:08:00.889664+03:00"
     dependencies:
     - condition: global.kibanaEnabled
       name: kibana
@@ -79,7 +79,7 @@ entries:
       tanzuCategory: application
     apiVersion: v2
     appVersion: 26.8.1
-    created: "2026-10-29T01:09:13.165946+03:00"
+    created: "2026-10-30T03:08:00.906357+03:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -118,7 +118,7 @@ entries:
       tanzuCategory: application
     apiVersion: v2
     appVersion: 26.8.1
-    created: "2026-10-29T01:09:13.160163+03:00"
+    created: "2026-10-30T03:08:00.900958+03:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -157,7 +157,7 @@ entries:
       tanzuCategory: application
     apiVersion: v2
     appVersion: 26.3.3
-    created: "2026-10-29T01:09:13.154619+03:00"
+    created: "2026-10-30T03:08:00.89514+03:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -197,7 +197,7 @@ entries:
       tanzuCategory: clusterUtility
     apiVersion: v2
     appVersion: 9.1.2
-    created: "2026-10-29T01:09:13.167587+03:00"
+    created: "2026-10-30T03:08:00.908223+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -239,7 +239,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 11.4.7
-    created: "2026-10-29T01:09:13.170476+03:00"
+    created: "2026-10-30T03:08:00.912122+03:00"
     dependencies:
     - name: common
       repository: oci://registry-1.docker.io/bitnamicharts
@@ -284,7 +284,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 8.0.13
-    created: "2026-10-29T01:09:13.174308+03:00"
+    created: "2026-10-30T03:08:00.915762+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -326,7 +326,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 9.4.0
-    created: "2026-10-29T01:09:13.176712+03:00"
+    created: "2026-10-30T03:08:00.918898+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -362,12 +362,53 @@ entries:
         - name: postgres-exporter
           image: docker.io/bitnami/postgres-exporter:0.17.1-debian-12-r16
         - name: postgresql
+          image: ghcr.io/c4twithshell/containers/postgresql:18.6.0-debian-12-r24
+      licenses: Apache-2.0
+      tanzuCategory: service
+    apiVersion: v2
+    appVersion: 18.6.0
+    created: "2026-10-30T03:08:00.925808+03:00"
+    dependencies:
+    - name: common
+      repository: https://c4twithshell.github.io/bitnami-charts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: PostgreSQL (Postgres) is an open source object-relational database
+      known for reliability and data integrity. ACID-compliant, it supports foreign
+      keys, joins, views, triggers and stored procedures.
+    digest: 28a075e73961312fbe6244887e1109f228b6cf6d4f7ac9ff6708b6ad1466cc76
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+    urls:
+    - postgresql-18.0.0.tgz
+    version: 18.0.0
+  - annotations:
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r51
+        - name: postgres-exporter
+          image: docker.io/bitnami/postgres-exporter:0.17.1-debian-12-r16
+        - name: postgresql
           image: docker.io/bitnami/postgresql:17.6.0-debian-12-r4
       licenses: Apache-2.0
       tanzuCategory: service
     apiVersion: v2
     appVersion: 17.6.0
-    created: "2026-10-29T01:09:13.180043+03:00"
+    created: "2026-10-30T03:08:00.922273+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -413,7 +454,7 @@ entries:
       tanzuCategory: service
     apiVersion: v2
     appVersion: 8.2.1
-    created: "2026-10-29T01:09:13.183741+03:00"
+    created: "2026-10-30T03:08:00.930892+03:00"
     dependencies:
     - name: common
       repository: https://c4twithshell.github.io/bitnami-charts
@@ -439,4 +480,4 @@ entries:
     urls:
     - redis-23.1.1.tgz
     version: 23.1.1
-generated: "2026-10-29T01:09:13.142322+03:00"
+generated: "2026-10-30T03:08:00.880323+03:00"
